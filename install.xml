@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<!--Generated with Mod Manager (c) 2013 Yoshi2889-->
+<modification xmlns:smf="http://www.simplemachines.org/" xmlns="http://www.simplemachines.org/xml/modification">
+	<id>margarett:postsintopicview</id>
+	<version>1.00</version>
+	<file name="$languagedir/Modifications.english.php">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[$txt['own_posts'] = 'Own posts: %1$d';
+]]></add>
+		</operation>
+	</file>
+	<file name="$languagedir/Modifications.portuguese_pt.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[$txt['own_posts'] = 'Minhas mensagens: %1$d';
+]]></add>
+		</operation>
+	</file>
+	<file name="$languagedir/Modifications.portuguese_brazilian.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[$txt['own_posts'] = 'Minhas mensagens: %1$d';
+]]></add>
+		</operation>
+	</file>
+	<file name="$languagedir/Modifications.spanish_es.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[$txt['own_posts'] = 'Mensajes propios: %1$d';
+]]></add>
+		</operation>
+	</file>
+	<file name="$languagedir/Modifications.spanish_latin.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[$txt['own_posts'] = 'Mensajes propios: %1$d';
+]]></add>
+		</operation>
+	</file>
+	<file name="$sourcedir/MessageIndex.php">
+		<operation>
+			<search position="replace"><![CDATA[				SELECT id_topic
+				FROM {db_prefix}messages
+]]></search>
+			<add><![CDATA[				SELECT id_topic, COUNT(id_topic) AS own_posts
+				FROM {db_prefix}messages
+]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[				$context['topics'][$row['id_topic']]['class'] = 'my_' . $context['topics'][$row['id_topic']]['class'];
+]]></search>
+			<add><![CDATA[				$context['topics'][$row['id_topic']]['own_posts'] = $row['own_posts'];
+]]></add>
+		</operation>
+
+	</file>
+	<file name="$themedir/MessageIndex.template.php">
+		<operation>
+			<search position="replace"><![CDATA[						', $topic['replies'], ' ', $txt['replies'], '
+						<br />
+						', $topic['views'], ' ', $txt['views'], '
+]]></search>
+			<add><![CDATA[						', $topic['replies'], ' / ', $topic['views'], '
+						', (!empty($topic['own_posts']) ? '<br />'. sprintf($txt['own_posts'], $topic['own_posts']) : ''), '
+]]></add>
+		</operation>
+	</file>
+</modification>
