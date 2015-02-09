@@ -14,6 +14,10 @@ Please note that:
 
 [b]Changelog[/b]
 [code]
+Version 1.1 // 09-02-2015
+================================================================================
++ License change for BSD, no functional change
+
 Version 1.00 // 01-04-2014
 ================================================================================
 + First release
@@ -25,5 +29,6 @@ Legend:
  - Feature or option removal.
 [/code]
 
-[center][img]http://i.creativecommons.org/l/by/3.0/88x31.png[/img]
-This mod is licensed under [url=http://creativecommons.org/licenses/by/3.0/]Creative Commons Attribution 3.0 Unported License[/url][/center]
+This mod is licensed under [url=http://opensource.org/licenses/BSD-2-Clause]Simplified BSD (2-Clause)[/url]
+Copyright (c) 2015, Bruno Alves
+License text inside the package
