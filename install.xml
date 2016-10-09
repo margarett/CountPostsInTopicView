@@ -39,6 +39,13 @@
 ]]></add>
 		</operation>
 	</file>
+	<file name="$languagedir/Modifications.russian-utf8.php">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[$txt['own_posts'] = 'Моих сообщений: %1$d';
+]]></add>
+		</operation>
+	</file>
 	<file name="$sourcedir/MessageIndex.php">
 		<operation>
 			<search position="replace"><![CDATA[				SELECT id_topic
